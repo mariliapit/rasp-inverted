@@ -11,12 +11,13 @@ EOF
 "
 
 echo "removendo bordas pretas"
-sed -i "s/#disable_overscan/disable_overscan=1/" /boot/config.txt
+sed -i "s/#disable_overscan=1/disable_overscan=1/" /boot/config.txt
 
 echo "criando backup de arquivo de configuracao do touchscreen"
-mv 
+mv /usr/share/X11/xorg.conf.d/10-evdev.conf /usr/share/X11/xorg.conf.d/10-evdev.conf.bak 
 
 echo "subtistuindo arquivo de configuracao do touchscreen"
-mv
+cp ./src/45-evdev.conf /usr/share/X11/xorg.conf.d/45-evdev.conf
 
 echo "reiniciando rasp..."
+reboot
